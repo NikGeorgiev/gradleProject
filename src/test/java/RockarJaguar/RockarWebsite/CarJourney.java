@@ -2,7 +2,9 @@ package RockarJaguar.RockarWebsite;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class CarJourney {
@@ -14,28 +16,29 @@ public class CarJourney {
     private By SkipThisStepBtn = By.cssSelector(".button.skip-button");
     private By SelectXfModel = By.cssSelector(".slick-center img");
     private By ContinueAfterTickbox = By.cssSelector(".button.button-narrow.next-step.continue");
+<<<<<<< HEAD
 
     private By SelectAllCarPrices = By.cssSelector("rockar-price");
 
     public CarJourney (WebDriver driver){
+=======
+    public String carPriceSelector = ".rockar-price .price";
+>>>>>>> d2795fec6b1a04e4a1041b1f291da4c11fa0fa0a
 
+    public CarJourney (WebDriver driver){
         this.driver = driver;
     }
-
-
 
     public CarJourney goToHomePage(){
         waitForElement();
         driver.navigate().to(homePageURL);
         return this;
-
     }
 
     public CarJourney goToFindNewCarBtn(){
         waitForElement();
         driver.findElement(FindNewCarBtn).click();
         return this;
-
     }
 
     public CarJourney clickNextStep(){
@@ -43,36 +46,68 @@ public class CarJourney {
         driver.findElement(NextStepBtn).click();
         return this;
     }
+
     public CarJourney waitForElement() {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         return this;
     }
+
     public CarJourney pressContinue(){
         driver.findElement(ContinueBtn).click();
         return this;
-
     }
+
     public CarJourney skipThisStep(){
         driver.findElement(SkipThisStepBtn).click();
         return this;
     }
+
     public CarJourney selectXF(){
         //Sleep for testing purposes
         try {
-            Thread.sleep(3000);
+            Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         driver.findElement(SelectXfModel).click();
         return this;
     }
+
     public CarJourney continueAfterTickBox(){
         driver.findElement(ContinueAfterTickbox).click();
         return this;
     }
 
+<<<<<<< HEAD
 
 
 
 
+=======
+    public CarJourney getPrice (){
+        //sleep for testing purposes
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        // list all the cars in the page and prints it out
+        List<WebElement> carPriceList = driver.findElements(By.cssSelector(carPriceSelector));
+        carPriceList.forEach((i) -> System.out.println((i.getText().replaceAll("[£,]", ""))));
+        //had to sleep as it was too fast
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        //Calculates the total Price of the cars avaliable
+        int totalPriceOfAvailableCars = 0;
+        for (WebElement a : carPriceList){
+            totalPriceOfAvailableCars += Integer.parseInt(a.getText().replaceAll("[£,]", ""));
+        }
+        System.out.println("Total Prices of Cars: " + totalPriceOfAvailableCars);
+        driver.close();
+        return this;
+    }
+>>>>>>> d2795fec6b1a04e4a1041b1f291da4c11fa0fa0a
 }
