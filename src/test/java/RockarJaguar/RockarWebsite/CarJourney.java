@@ -9,11 +9,11 @@ public class CarJourney {
     private WebDriver driver;
     private String homePageURL = "https://jaguar.rockar.com/";
     private By FindNewCarBtn = By.cssSelector("ul.navigation li");
-    private By NextStepBtn = By.xpath("/html/body/div[5]/div[3]/div/div/div/div[5]/div[1]/button[2]");
-    private By ContinueBtn = By.xpath("//*[@id=\"finance-filter\"]/div[4]/div[2]/div/div/div/div/div[2]/button[2]");
-    private By SkipThisStepBtn = By.xpath("//*[@id=\"car-finder\"]/div[4]/div[2]/div[3]/div[1]/div/div[3]/div/button");
+    private By NextStepBtn = By.cssSelector("#car-finder > div.navigation-buttons-wrapper.col-12 > div.navigation-outer-container > button:nth-child(2)");
+    private By ContinueBtn = By.cssSelector("#finance-filter > div.popup.finance-confirmation-popup > div.popup-container > div > div > div > div > div.row.align-right > button.button.button-narrow.popup-continue");
+    private By SkipThisStepBtn = By.cssSelector("#car-finder > div.car-finder-filters > div.part-exchange > div.substep-1 > div.row > div > div.part-exchange-right > div > button");
     private By SelectXfModel = By.cssSelector(".slick-center img");
-    private By ContinueAfterTickbox = By.xpath("//*[@id=\"car-finder\"]/div[5]/div[1]/button[3]");
+    private By ContinueAfterTickbox = By.cssSelector("#car-finder > div.navigation-buttons-wrapper.col-12 > div.navigation-outer-container > button.button.button-narrow.next-step.continue.desktop-tablet-only");
     public CarJourney (WebDriver driver){
 
         this.driver = driver;
