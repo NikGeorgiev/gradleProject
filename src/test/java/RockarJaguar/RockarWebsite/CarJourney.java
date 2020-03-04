@@ -14,6 +14,9 @@ public class CarJourney {
     private By SkipThisStepBtn = By.cssSelector(".button.skip-button");
     private By SelectXfModel = By.cssSelector(".slick-center img");
     private By ContinueAfterTickbox = By.cssSelector(".button.button-narrow.next-step.continue");
+
+    private By SelectAllCarPrices = By.cssSelector("rockar-price");
+
     public CarJourney (WebDriver driver){
 
         this.driver = driver;
@@ -67,6 +70,7 @@ public class CarJourney {
         driver.findElement(ContinueAfterTickbox).click();
         return this;
     }
+
 
 
 

@@ -29,25 +29,11 @@ public class Tests {
     public static void coverJourney() {
         seleniumConfig = new SeleniumConfig("chrome","/Users/nikolaygeorgiev/Desktop/gradleProject/chromedriver");
         carJourney = new CarJourney(seleniumConfig.getDriver());
+
         }
 //        CarJourney carJourney = new CarJourney();
 //    }
-    /*1Do this
-    Get color
-    2Then this
-    get model
-    3then this
-    Get the price of the car
-    get the title of the car
-    4then this
-    Get bal bla
-    5then this
-    get bla
-    1 Check if color is pink
-    2 Check if model is new
 
-
-            */
     @Test
     public void PhaseOne(){
         carJourney.goToHomePage()
