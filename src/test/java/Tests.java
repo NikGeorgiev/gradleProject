@@ -28,11 +28,6 @@ public class Tests {
         carJourney = new CarJourney(seleniumConfig.getDriver());
 
         }
-<<<<<<< HEAD
-//        CarJourney carJourney = new CarJourney();
-//    }
-=======
->>>>>>> d2795fec6b1a04e4a1041b1f291da4c11fa0fa0a
 
     @Test
     public void PhaseOne(){
