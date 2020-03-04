@@ -16,14 +16,7 @@ public class CarJourney {
     private By SkipThisStepBtn = By.cssSelector(".button.skip-button");
     private By SelectXfModel = By.cssSelector(".slick-center img");
     private By ContinueAfterTickbox = By.cssSelector(".button.button-narrow.next-step.continue");
-<<<<<<< HEAD
-
-    private By SelectAllCarPrices = By.cssSelector("rockar-price");
-
-    public CarJourney (WebDriver driver){
-=======
     public String carPriceSelector = ".rockar-price .price";
->>>>>>> d2795fec6b1a04e4a1041b1f291da4c11fa0fa0a
 
     public CarJourney (WebDriver driver){
         this.driver = driver;
@@ -78,12 +71,6 @@ public class CarJourney {
         return this;
     }
 
-<<<<<<< HEAD
-
-
-
-
-=======
     public CarJourney getPrice (){
         //sleep for testing purposes
         try {
@@ -109,5 +96,4 @@ public class CarJourney {
         driver.close();
         return this;
     }
->>>>>>> d2795fec6b1a04e4a1041b1f291da4c11fa0fa0a
 }
