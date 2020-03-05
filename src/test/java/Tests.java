@@ -22,7 +22,7 @@ public class Tests {
     private static SeleniumConfig seleniumConfig;
     private static CarJourney carJourney;
 
-    //public WebDriver driver = new ChromeDriver();
+    public WebDriver driver = new ChromeDriver();
 
 
     @BeforeClass
@@ -41,7 +41,7 @@ public class Tests {
                 .clickNextStep()
                 .pressContinue()
                 .skipThisStep()
-                .selectXF()
+                .selectAllModels()
                 .continueAfterTickBox();
     }
 
