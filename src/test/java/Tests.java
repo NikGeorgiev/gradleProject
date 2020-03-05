@@ -1,5 +1,6 @@
 import RockarJaguar.RockarWebsite.CarJourney;
 import RockarJaguar.SeleniumConfig.SeleniumConfig;
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -35,16 +36,24 @@ public class Tests {
 //    }
 
     @Test
-    public void PhaseOne(){
+    public void PhaseOne() throws InterruptedException
+    {
         carJourney.goToHomePage()
                 .goToFindNewCarBtn()
                 .clickNextStep()
                 .pressContinue()
                 .skipThisStep()
                 .selectAllModels()
+                .displayAllCheckboxes()
                 .continueAfterTickBox()
                 .loadPage()
                 .getPrice();
+
+    }
+
+    @AfterClass
+    public static void endJourney() {
+        seleniumConfig.getDriver().quit();
     }
 
 //    @Test

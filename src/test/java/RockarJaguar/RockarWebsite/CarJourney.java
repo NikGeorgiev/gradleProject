@@ -4,7 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
+import javax.lang.model.element.Element;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -15,7 +17,9 @@ public class CarJourney {
     private By NextStepBtn = By.cssSelector(".button-narrow.next-step");
     private By ContinueBtn = By.cssSelector(".button-narrow.popup-continue");
     private By SkipThisStepBtn = By.cssSelector(".button.skip-button");
-    private By SelectAllModels = By.cssSelector(".draggable .checkbox-values");
+    private By Carousel = By.cssSelector("label[for=cs0706]");
+    private By Span = By.cssSelector("label[for=cs0706] span");
+    private By SelectAllModels = By.cssSelector(".checkbox-values");
     private By ContinueAfterTickbox = By.cssSelector(".button.button-narrow.next-step.continue");
     public String carPriceSelector = ".rockar-price .price";
 
@@ -64,6 +68,18 @@ public class CarJourney {
         return this;
     }
 
+    public CarJourney displayAllCheckboxes() throws InterruptedException
+    {
+
+        Thread.sleep(6000);
+        Actions actions = new Actions(driver);
+        WebElement element = driver.findElement(Carousel);
+        WebElement span = driver.findElement(Span);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
+        actions.moveToElement(span).click().perform();
+        return this;
+    }
+
     public CarJourney selectAllModels() {
         //Sleep for testing purposes
         try {
@@ -72,7 +88,7 @@ public class CarJourney {
             e.printStackTrace();
         }
         List<WebElement> models = driver.findElements(SelectAllModels);
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 4; i++) {
             models.get(i).click();
         }
         return this;
@@ -83,11 +99,14 @@ public class CarJourney {
         return this;
     }
 
-    public CarJourney loadPage(){
-
+    public CarJourney loadPage() {
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
             JavascriptExecutor jse = (JavascriptExecutor)driver;
             jse.executeScript("window.scrollTo(0, document.body.scrollHeight)", "");
-
 
             return this;
         }
