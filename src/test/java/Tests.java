@@ -27,7 +27,7 @@ public class Tests {
 
     @BeforeClass
     public static void coverJourney() {
-        seleniumConfig = new SeleniumConfig("chrome","/Users/nikolaygeorgiev/Desktop/gradleProject/chromedriver");
+        seleniumConfig = new SeleniumConfig("chrome","/Users/nikolaygeorgiev/Desktop/GradleProject1/chromedriver");
         carJourney = new CarJourney(seleniumConfig.getDriver());
 
         }
