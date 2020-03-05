@@ -20,6 +20,7 @@ public class CarJourney {
     private By Carousel = By.cssSelector("label[for=cs0706]");
     private By Span = By.cssSelector("label[for=cs0706] span");
     private By SelectAllModels = By.cssSelector(".checkbox-values");
+    private By ClickOnArrow = By.cssSelector("document.querySelector(\"#model-filter > div > div > div > div > span.slick-next.slick-arrow\")");
     private By ContinueAfterTickbox = By.cssSelector(".button.button-narrow.next-step.continue");
     public String carPriceSelector = ".rockar-price .price";
 
@@ -80,6 +81,11 @@ public class CarJourney {
         return this;
     }
 
+    public CarJourney clickArrow(){
+        driver.findElement(ClickOnArrow).click();
+        return this;
+    }
+
     public CarJourney selectAllModels() {
         //Sleep for testing purposes
         try {
@@ -88,7 +94,7 @@ public class CarJourney {
             e.printStackTrace();
         }
         List<WebElement> models = driver.findElements(SelectAllModels);
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 3; i++) {
             models.get(i).click();
         }
         return this;
