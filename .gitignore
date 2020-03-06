@@ -1,6 +1,11 @@
 .idea/
+<<<<<<< HEAD
 build
 .gradle
 .DS_Store
 .idea/workspace.xml
+=======
+.gradle
+build
+>>>>>>> 2cc584e291d986317cc8c0e7b68608490ffa2b22
 
