@@ -26,6 +26,7 @@ public class Tests {
     public static void coverJourney() {
         seleniumConfig = new SeleniumConfig("chrome","/Users/anissubba/Documents/gradleProject/chromedriver");
         carJourney = new CarJourney(seleniumConfig.getDriver());
+
         }
 
     @Test

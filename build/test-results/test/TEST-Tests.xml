@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <testsuite name="Tests" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-03-06T11:53:34" hostname="Rockar-Laptop-15MBPs-MacBook-Pro.local" time="24.469">
+=======
+<<<<<<< HEAD
+<testsuite name="Tests" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-03-04T13:38:58" hostname="Nikolays-MacBook-Pro.local" time="8.592">
+  <properties/>
+  <testcase name="PhaseOne" classname="Tests" time="8.592"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Starting ChromeDriver 80.0.3987.106 (f68069574609230cf9b635cd784cfb1bf81bb53a-refs/branch-heads/3987@{#882}) on port 3382
+Only local connections are allowed.
+Please protect ports used by ChromeDriver and related test frameworks to prevent access by malicious code.
+Mar 04, 2020 1:38:58 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: W3C
+[1583329138.518][SEVERE]: Timed out receiving message from renderer: 0.100
+=======
+<testsuite name="Tests" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-03-04T12:28:20" hostname="Rockar-Laptop-15MBPs-MacBook-Pro.local" time="18.088">
+>>>>>>> 411d02b39585e96296d14719712e81aa1f14fd32
   <properties/>
   <testcase name="PhaseOne" classname="Tests" time="24.469"/>
   <system-out><![CDATA[32144
@@ -33,6 +49,11 @@ Only local connections are allowed.
 Please protect ports used by ChromeDriver and related test frameworks to prevent access by malicious code.
 Mar 06, 2020 11:53:34 AM org.openqa.selenium.remote.ProtocolHandshake createSession
 INFO: Detected dialect: W3C
+<<<<<<< HEAD
 [1583495614.748][SEVERE]: Timed out receiving message from renderer: 0.100
+=======
+[1583324900.547][SEVERE]: Timed out receiving message from renderer: 0.100
+>>>>>>> d2795fec6b1a04e4a1041b1f291da4c11fa0fa0a
+>>>>>>> 411d02b39585e96296d14719712e81aa1f14fd32
 ]]></system-err>
 </testsuite>
