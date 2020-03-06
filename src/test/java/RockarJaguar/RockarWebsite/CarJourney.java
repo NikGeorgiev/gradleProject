@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -30,13 +31,9 @@ public class CarJourney {
     private By ContinueAfterTickbox = By.cssSelector(".button.button-narrow.next-step.continue");
     public String carPriceSelector = ".rockar-price .price";
 
-    public CarJourney (WebDriver driver){
-        this.driver = driver;
-    }
+    public CarJourney (WebDriver driver){ this.driver = driver; }
 
-    public WebDriverWait getDriverWait() {
-        return new WebDriverWait(driver, 15);
-    }
+    public WebDriverWait getDriverWait() { return new WebDriverWait(driver, 15); }
 
     public CarJourney waitForPreloader() {
         List<WebElement> preloaders = driver.findElements(By.cssSelector( ".general-preloader"));
@@ -45,33 +42,23 @@ public class CarJourney {
         return this;
     }
 
-    public CarJourney goToHomePage(){
-        waitForElement();
-        driver.navigate().to(homePageURL);
+    public CarJourney goToHomePage(){ waitForElement(); driver.navigate().to(homePageURL);
         return this;
     }
 
-    public CarJourney goToFindNewCarBtn(){
-        waitForElement();
-        driver.findElement(FindNewCarBtn).click();
+    public CarJourney goToFindNewCarBtn(){ waitForElement(); driver.findElement(FindNewCarBtn).click();
         return this;
     }
 
-    public CarJourney clickNextStep(){
-        waitForElement();
-        driver.findElement(NextStepBtn).click();
+    public CarJourney clickNextStep(){ waitForElement(); driver.findElement(NextStepBtn).click();
         return this;
     }
 
-    public CarJourney waitForElement() {
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    public CarJourney waitForElement() { driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         return this;
     }
 
-    public CarJourney pressContinue(){
-        driver.findElement(ContinueBtn).click();
-        return this;
-    }
+    public CarJourney pressContinue(){ driver.findElement(ContinueBtn).click(); return this; }
 
     public CarJourney skipThisStep(){
         driver.findElement(SkipThisStepBtn).click();
@@ -107,15 +94,20 @@ public class CarJourney {
         return this;
     }
 
-    public CarJourney continueAfterTickBox(){
-        driver.findElement(ContinueAfterTickbox).click();
+    public CarJourney continueAfterTickBox(){ driver.findElement(ContinueAfterTickbox).click();
         return this;
     }
 
     public CarJourney loadPage(){
-        JavascriptExecutor jse = (JavascriptExecutor)driver;
-        jse.executeScript("window.scrollTo(0, document.body.scrollHeight)", "");
+        long lastHeight;
+        long newHeight;
+        do{
+            lastHeight = (long) ((JavascriptExecutor) driver).executeScript("return document.body.scrollHeight");
+            ((JavascriptExecutor)driver).executeScript("window.scrollTo(0, document.body.scrollHeight);");
+            waitForPreloader();
 
+            newHeight = (long) ((JavascriptExecutor) driver).executeScript("return document.body.scrollHeight");
+        } while (newHeight != lastHeight);
         return this;
     }
 
@@ -123,17 +115,18 @@ public class CarJourney {
         //sleep for testing purposes
         waitForPreloader();
         // list all the cars in the page and prints it out
-        List<WebElement> carPriceList = driver.findElements(By.cssSelector(carPriceSelector));
-        carPriceList.forEach((i) -> System.out.println((i.getText().replaceAll("[£,]", ""))));
-        //had to sleep as it was too fast
-        waitForPreloader();
+        List<WebElement> carPriceElement = driver.findElements(By.cssSelector(carPriceSelector));
+        List<Integer> carPriceList = new ArrayList<>();
+        carPriceElement.forEach((i) -> carPriceList.add(Integer.parseInt(i.getText().replaceAll("[£,]", ""))));
+        System.out.println(carPriceList);
+
         //Calculates the total Price of the cars avaliable
-        int totalPriceOfAvailableCars = 0;
-        for (WebElement a : carPriceList){
-            totalPriceOfAvailableCars += Integer.parseInt(a.getText().replaceAll("[£,]", ""));
+        int sum = 0;
+
+        for (int a : carPriceList){
+            sum += a;
         }
-        System.out.println("Total Prices of Cars: " + totalPriceOfAvailableCars);
-        driver.quit();
+        System.out.println("Total Prices of Cars: " + sum);
         return this;
     }
 }
