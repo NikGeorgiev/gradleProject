@@ -8,8 +8,10 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.IntStream;
 
 public class CarJourney {
     private WebDriver driver;
@@ -114,30 +116,43 @@ public class CarJourney {
     }
 
     public CarJourney loadPage() {
-        waitForPreloader();
-            JavascriptExecutor jse = (JavascriptExecutor)driver;
-            jse.executeScript("window.scrollTo(0, document.body.scrollHeight)", "");
+        long lastHeight;
+        long newHeight;
+        do {
+            lastHeight = (long) ((JavascriptExecutor) driver).executeScript("return document.body.scrollHeight");
+            ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight);");
+            waitForPreloader();
 
-            return this;
+            newHeight = (long) ((JavascriptExecutor) driver).executeScript("return document.body.scrollHeight");
+        } while (newHeight != lastHeight);
+        return this;
+//            JavascriptExecutor jse = (JavascriptExecutor)driver;
+//            jse.executeScript("window.scrollTo(0, document.body.scrollHeight)", "");
+//            return this;
         }
 
         public CarJourney getPrice (){
         waitForPreloader();
 
         // list all the cars in the page and prints it out
-        List<WebElement> carPriceList = driver.findElements(By.cssSelector(carPriceSelector));
+        List<WebElement> carPriceElements = driver.findElements(By.cssSelector(carPriceSelector));
+        List<Integer> carPriceList = new ArrayList<>();
 
-        carPriceList.forEach((i) -> System.out.println((i.getText().replaceAll("[£,]", ""))));
-        //had to sleep as it was too fast
-        waitForPreloader();
+        carPriceElements.forEach(i -> carPriceList.add(Integer.parseInt(i.getText().replaceAll("[£,]", ""))))   ;
+
+        System.out.println(carPriceList);
         //Calculates the total Price of the cars avaliable
-        int totalPriceOfAvailableCars = 0;
-        for (WebElement a : carPriceList)
-        {
-            totalPriceOfAvailableCars += Integer.parseInt(a.getText().replaceAll("[£,]", ""));
-        }
+        int totalPriceOfAvailableCars;
+        int sum = 0;
+            for (int i: carPriceList) {
+                sum += i;
+            }
+//        for (WebElement a : carPriceElements)
+//        {
+//            totalPriceOfAvailableCars += Integer.parseInt(a.getText().replaceAll("[£,]", ""));
+//        }
 
-        System.out.println("Total Prices of Cars: " + totalPriceOfAvailableCars);
+        System.out.println("Total Prices of Cars: " + sum);
         //driver.close();
         return this;
     }
