@@ -43,13 +43,11 @@ public class Tests {
                 .clickNextStep()
                 .pressContinue()
                 .skipThisStep()
-//                .selectAllModels()
-                .clickArrow();
-//                .displayAllCheckboxes()
-//                .clickArrow()
-//                .continueAfterTickBox()
-//                .loadPage()
-//                .getPrice();
+                .selectAllModels()
+                //.displayAllCheckboxes()
+                .continueAfterTickBox()
+                .loadPage()
+                .getPrice();
 
     }
 
