@@ -1,26 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Tests" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-03-04T12:28:20" hostname="Rockar-Laptop-15MBPs-MacBook-Pro.local" time="18.088">
+<testsuite name="Tests" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-03-06T11:53:34" hostname="Rockar-Laptop-15MBPs-MacBook-Pro.local" time="24.469">
   <properties/>
-  <testcase name="PhaseOne" classname="Tests" time="18.088"/>
-  <system-out><![CDATA[37202
-37392
-37392
-31518
-37702
-37797
-38097
-32223
-38217
-39117
-36173
-38722
-Total Prices of Cars: 441552
+  <testcase name="PhaseOne" classname="Tests" time="24.469"/>
+  <system-out><![CDATA[32144
+33752
+34129
+35048
+35990
+36310
+36310
+36310
+37540
+35485
+35485
+35950
+35280
+36005
+36005
+36390
+36437
+36232
+37715
+36825
+33954
+32724
+33189
+35951
+Total Prices of Cars: 851160
 ]]></system-out>
-  <system-err><![CDATA[Starting ChromeDriver 80.0.3987.106 (f68069574609230cf9b635cd784cfb1bf81bb53a-refs/branch-heads/3987@{#882}) on port 23880
+  <system-err><![CDATA[Starting ChromeDriver 80.0.3987.106 (f68069574609230cf9b635cd784cfb1bf81bb53a-refs/branch-heads/3987@{#882}) on port 14849
 Only local connections are allowed.
 Please protect ports used by ChromeDriver and related test frameworks to prevent access by malicious code.
-Mar 04, 2020 12:28:20 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+Mar 06, 2020 11:53:34 AM org.openqa.selenium.remote.ProtocolHandshake createSession
 INFO: Detected dialect: W3C
-[1583324900.547][SEVERE]: Timed out receiving message from renderer: 0.100
+[1583495614.748][SEVERE]: Timed out receiving message from renderer: 0.100
 ]]></system-err>
 </testsuite>

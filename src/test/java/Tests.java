@@ -35,8 +35,10 @@ public class Tests {
                 .clickNextStep()
                 .pressContinue()
                 .skipThisStep()
-                .selectXF()
+                .selectAllModels()
                 .continueAfterTickBox()
+                .loadPage()
                 .getPrice();
     }
+
 }
