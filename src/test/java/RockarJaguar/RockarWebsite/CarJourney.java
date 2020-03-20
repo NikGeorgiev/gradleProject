@@ -116,19 +116,17 @@ public class CarJourney {
     }
 
     public CarJourney loadPage() {
-        long lastHeight;
-        long newHeight;
-        do {
-            lastHeight = (long) ((JavascriptExecutor) driver).executeScript("return document.body.scrollHeight");
-            ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight);");
-            waitForPreloader();
+            long lastHeight;
+            long newHeight;
+            do {
+                lastHeight = (long) ((JavascriptExecutor) driver).executeScript("return document.body.scrollHeight");
+                ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight);");
+                waitForPreloader();
 
-            newHeight = (long) ((JavascriptExecutor) driver).executeScript("return document.body.scrollHeight");
-        } while (newHeight != lastHeight);
-        return this;
-//            JavascriptExecutor jse = (JavascriptExecutor)driver;
-//            jse.executeScript("window.scrollTo(0, document.body.scrollHeight)", "");
-//            return this;
+                newHeight = (long) ((JavascriptExecutor) driver).executeScript("return document.body.scrollHeight");
+            } while (newHeight != lastHeight);
+            return this;
+
         }
 
         public CarJourney getPrice (){
@@ -147,10 +145,7 @@ public class CarJourney {
             for (int i: carPriceList) {
                 sum += i;
             }
-//        for (WebElement a : carPriceElements)
-//        {
-//            totalPriceOfAvailableCars += Integer.parseInt(a.getText().replaceAll("[£,]", ""));
-//        }
+
 
         System.out.println("Total Prices of Cars: " + sum);
         //driver.close();
